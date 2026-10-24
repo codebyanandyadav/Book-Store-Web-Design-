@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Book Store - Home</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fce4ec;
+            color: #333;
+        }
+
+        /* ---------- TOP FRAME (header + navigation) ---------- */
+        header {
+            position: relative;
+            background-color: lightblue;
+            text-align: center;
+            padding: 20px 10px;
+            border-bottom: 3px solid #1565c0;
+        }
+
+        .logo {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 90px;
+            height: auto;
+            transform: rotate(0deg);   /* yahan 0deg ko 90deg, -90deg ya 180deg se badal kar dekhein */
+        }
+
+        header h1 {
+            color: #0d47a1;
+            font-size: 2.2em;
+            letter-spacing: 2px;
+        }
+
+        nav {
+            margin-top: 15px;
+        }
+
+        nav a {
+            display: inline-block;
+            margin: 0 12px;
+            padding: 8px 16px;
+            color: #fff;
+            background-color: #1565c0;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #0d47a1;
+        }
+
+        /* ---------- MAIN LAYOUT (left sidebar + right content) ---------- */
+        .container {
+            display: flex;
+            min-height: 70vh;
+        }
+
+        /* LEFT FRAME (branches) */
+        aside {
+            width: 22%;
+            background-color: lightyellow;
+            padding: 25px 20px;
+            border-right: 2px solid #f9a825;
+        }
+
+        aside h3 {
+            color: #e65100;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #f9a825;
+            padding-bottom: 8px;
+        }
+
+        aside ul {
+            list-style: none;
+        }
+
+        aside li {
+            margin-bottom: 14px;
+        }
+
+        aside a {
+            display: block;
+            padding: 10px;
+            background: #fff;
+            color: #1565c0;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            border-left: 4px solid #f9a825;
+            border-radius: 4px;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        aside a:hover {
+            background: #fff8e1;
+            transform: translateX(5px);
+        }
+
+        /* RIGHT FRAME (main content) */
+        main {
+            width: 78%;
+            padding: 30px 40px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 30px 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .hero h2 {
+            color: green;
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+
+        .hero h3 {
+            color: blue;
+            font-weight: normal;
+            line-height: 1.7;
+            font-size: 1.15em;
+        }
+
+        .info {
+            margin-top: 25px;
+            background: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .info h3 {
+            color: #0d47a1;
+            margin-bottom: 12px;
+        }
+
+        .info p {
+            line-height: 1.7;
+            margin-bottom: 10px;
+        }
+
+        .branches {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .branch-card {
+            flex: 1 1 180px;
+            text-align: center;
+            padding: 20px;
+            border-radius: 8px;
+            color: #fff;
+            font-weight: bold;
+            font-size: 1.2em;
+            transition: transform 0.3s;
+        }
+
+        .branch-card:hover {
+            transform: scale(1.05);
+        }
+
+        .cse   { background: #2e7d32; }
+        .ece   { background: #6a1b9a; }
+        .eee   { background: #c62828; }
+        .civil { background: #ef6c00; }
+
+        /* ---------- FOOTER ---------- */
+        footer {
+            background-color: #1565c0;
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+            font-size: 14px;
+        }
+
+        /* ---------- RESPONSIVE (phone screens) ---------- */
+        @media (max-width: 700px) {
+            .logo { width: 60px; }
+            header h1 { font-size: 1.5em; }
+            .container { flex-direction: column; }
+            aside, main { width: 100%; }
+            nav a { margin: 5px; display: inline-block; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOP FRAME -->
+    <header>
+        <img src="logo.png" alt="GL Bajaj Logo" class="logo">
+        <h1>ONLINE BOOK STORE</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="login.html">Login</a>
+            <a href="registration.html">Registration</a>
+            <a href="catalogue.html">Catalogue</a>
+            <a href="cart.html">Cart</a>
+        </nav>
+    </header>
+
+    <div class="container">
+
+        <!-- LEFT FRAME -->
+        <aside>
+            <h3>Our Branches</h3>
+            <ul>
+                <li><a href="catalogue.html">CSE</a></li>
+                <li><a href="catalogue.html">ECE</a></li>
+                <li><a href="catalogue.html">EEE</a></li>
+                <li><a href="catalogue.html">CIVIL</a></li>
+            </ul>
+        </aside>
+
+        <!-- RIGHT FRAME -->
+        <main>
+            <div class="hero">
+                <h2>WELCOME TO ONLINE BOOK STORE</h2>
+                <h3>
+                    This online book store is developed for students.<br>
+                    It contains a book catalogue of various branches like
+                    CSE, ECE, EEE and CIVIL.
+                </h3>
+            </div>
+
+            <div class="info">
+                <h3>About Our Store</h3>
+                <p>Find your course books in one place. Browse the catalogue, add the books you need to your cart, and check out easily.</p>
+                <p>New here? Create an account using the Registration page, or sign in using the Login page.</p>
+            </div>
+
+            <div class="branches">
+                <div class="branch-card cse">CSE</div>
+                <div class="branch-card ece">ECE</div>
+                <div class="branch-card eee">EEE</div>
+                <div class="branch-card civil">CIVIL</div>
+            </div>
+        </main>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>Developed by Aayush Srivastava | Roll No. 2501920110011</p>
+        <p>G. L. Bajaj Institute of Technology and Management, Greater Noida</p>
+    </footer>
+
+</body>
+</html>

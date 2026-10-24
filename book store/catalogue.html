@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Catalogue - Online Book Store</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fce4ec;
+            color: #333;
+            min-height: 100vh;
+        }
+
+        /* ---------- HEADER (same as home page) ---------- */
+        header {
+            position: relative;
+            background-color: lightblue;
+            text-align: center;
+            padding: 20px 10px;
+            border-bottom: 3px solid #1565c0;
+        }
+
+        .logo {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 90px;
+            height: auto;
+        }
+
+        header h1 {
+            color: #0d47a1;
+            font-size: 2.2em;
+            letter-spacing: 2px;
+        }
+
+        nav {
+            margin-top: 15px;
+        }
+
+        nav a {
+            display: inline-block;
+            margin: 0 12px;
+            padding: 8px 16px;
+            color: #fff;
+            background-color: #1565c0;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #0d47a1;
+        }
+
+        /* ---------- CATALOGUE (Experiment 3) ---------- */
+        .catalogue {
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .catalogue h2 {
+            color: #0d47a1;
+            font-size: 2em;
+            margin-bottom: 25px;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            border: 1px solid #1565c0;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #1565c0;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        tr:nth-child(even) td {
+            background-color: #e3f2fd;
+        }
+
+        td img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .book-name {
+            font-weight: bold;
+            color: #0d47a1;
+            font-size: 1.1em;
+        }
+
+        .price {
+            font-weight: bold;
+            color: #2e7d32;
+            font-size: 1.1em;
+        }
+
+        .cart-btn {
+            padding: 10px 16px;
+            background-color: #ef6c00;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .cart-btn:hover {
+            background-color: #e65100;
+        }
+
+        /* ---------- FOOTER ---------- */
+        footer {
+            background-color: #1565c0;
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+            font-size: 14px;
+            margin-top: 30px;
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width: 700px) {
+            .logo { width: 60px; }
+            header h1 { font-size: 1.5em; }
+            nav a { margin: 5px; }
+            td img { width: 70px; height: 70px; }
+            th, td { padding: 8px; font-size: 14px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <img src="logo.png" alt="GL Bajaj Logo" class="logo">
+        <h1>ONLINE BOOK STORE</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="login.html">Login</a>
+            <a href="registration.html">Registration</a>
+            <a href="catalogue.html">Catalogue</a>
+            <a href="cart.html">Cart</a>
+        </nav>
+    </header>
+
+    <!-- CATALOGUE TABLE -->
+    <section class="catalogue">
+        <h2>BOOK CATALOGUE</h2>
+
+        <div class="table-wrapper">
+            <table>
+                <tr>
+                    <th>Cover Page</th>
+                    <th>Book Name</th>
+                    <th>Author Name</th>
+                    <th>Publisher</th>
+                    <th>Price</th>
+                    <th>Add to Cart</th>
+                </tr>
+
+                <tr>
+                    <td><img src="python.jpg" alt="Python book cover"></td>
+                    <td class="book-name">Python</td>
+                    <td>Winston</td>
+                    <td>Wiesley</td>
+                    <td class="price">₹40</td>
+                    <td><a href="cart.html"><button class="cart-btn">Add to Cart</button></a></td>
+                </tr>
+
+                <tr>
+                    <td><img src="COA.jpg" alt="COA book cover"></td>
+                    <td class="book-name">COA</td>
+                    <td>Waston</td>
+                    <td>BPB Publication</td>
+                    <td class="price">₹40</td>
+                    <td><a href="cart.html"><button class="cart-btn">Add to Cart</button></a></td>
+                </tr>
+
+                <tr>
+                    <td><img src="XML.jpg" alt="XML Bible cover"></td>
+                    <td class="book-name">XML Bible</td>
+                    <td>Author Name</td>
+                    <td>Publisher Name</td>
+                    <td class="price">₹40</td>
+                    <td><a href="cart.html"><button class="cart-btn">Add to Cart</button></a></td>
+                </tr>
+
+                <tr>
+                    <td><img src="Java2.jpg" alt="Java 2 book cover"></td>
+                    <td class="book-name">Java 2</td>
+                    <td>Author Name</td>
+                    <td>Publisher Name</td>
+                    <td class="price">₹40</td>
+                    <td><a href="cart.html"><button class="cart-btn">Add to Cart</button></a></td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>Developed by Anand Yadav | Roll No. 2501920110070</p>
+    </footer>
+
+</body>
+</html>

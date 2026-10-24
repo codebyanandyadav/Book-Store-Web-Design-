@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration - Online Book Store</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fce4ec;
+            color: #333;
+            min-height: 100vh;
+        }
+
+        header {
+            position: relative;
+            background-color: lightblue;
+            text-align: center;
+            padding: 20px 10px;
+            border-bottom: 3px solid #1565c0;
+        }
+
+        .logo {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 90px;
+            height: auto;
+            transform: rotate(0deg);
+        }
+
+        header h1 {
+            color: #0d47a1;
+            font-size: 2.2em;
+            letter-spacing: 2px;
+        }
+
+        nav { margin-top: 15px; }
+
+        nav a {
+            display: inline-block;
+            margin: 0 12px;
+            padding: 8px 16px;
+            color: #fff;
+            background-color: #1565c0;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        nav a:hover { background-color: #0d47a1; }
+
+        /* ---------- REGISTRATION FORM ---------- */
+        .reg-wrapper {
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .reg-box {
+            background-color: #fff;
+            width: 480px;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+        }
+
+        .reg-box h2 {
+            text-align: center;
+            color: #0d47a1;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        .field {
+            margin-bottom: 16px;
+        }
+
+        .field label.title {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 6px;
+        }
+
+        .field input[type="text"],
+        .field input[type="password"],
+        .field select,
+        .field textarea {
+            width: 100%;
+            padding: 9px;
+            border: 1px solid #999;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+
+        .field input:focus,
+        .field select:focus,
+        .field textarea:focus {
+            outline: none;
+            border-color: #1565c0;
+            box-shadow: 0 0 5px rgba(21, 101, 192, 0.4);
+        }
+
+        .inline {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-right: 14px;
+        }
+
+        .dob-row {
+            display: flex;
+            gap: 8px;
+        }
+
+        .dob-row select {
+            flex: 1;
+            padding: 9px;
+            border: 1px solid #999;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+
+        .error {
+            color: #c62828;
+            font-size: 13px;
+            margin-top: 4px;
+            display: none;
+        }
+
+        .error.show { display: block; }
+
+        .btn-row {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .btn-row input {
+            flex: 1;
+            padding: 11px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .btn-submit { background-color: #2e7d32; }
+        .btn-submit:hover { background-color: #1b5e20; }
+
+        .btn-reset { background-color: #c62828; }
+        .btn-reset:hover { background-color: #8e0000; }
+
+        .success-msg {
+            display: none;
+            margin-top: 15px;
+            padding: 12px;
+            background: #e8f5e9;
+            color: #1b5e20;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        footer {
+            background-color: #1565c0;
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+            font-size: 14px;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 700px) {
+            .logo { width: 60px; }
+            header h1 { font-size: 1.5em; }
+            nav a { margin: 5px; }
+            .reg-box { width: 100%; }
+            .dob-row { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="logo.png" alt="GL Bajaj Logo" class="logo">
+        <h1>ONLINE BOOK STORE</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="login.html">Login</a>
+            <a href="registration.html">Registration</a>
+            <a href="catalogue.html">Catalogue</a>
+            <a href="cart.html">Cart</a>
+        </nav>
+    </header>
+
+    <div class="reg-wrapper">
+        <div class="reg-box">
+            <h2>Registration Form</h2>
+
+            <form id="regForm" novalidate onsubmit="return validateForm()">
+
+                <!-- Name -->
+                <div class="field">
+                    <label class="title" for="name">Name:</label>
+                    <input type="text" id="name" name="name" placeholder="Only alphabets, minimum 6 letters">
+                    <div class="error" id="nameErr"></div>
+                </div>
+
+                <!-- Password -->
+                <div class="field">
+                    <label class="title" for="password">Password:</label>
+                    <input type="password" id="password" name="password" placeholder="minimum 6 characters">
+                    <div class="error" id="passErr"></div>
+                </div>
+
+                <!-- Email -->
+                <div class="field">
+                    <label class="title" for="email">E-mail:</label>
+                    <input type="text" id="email" name="email" placeholder="name@domain.com">
+                    <div class="error" id="emailErr"></div>
+                </div>
+
+                <!-- Phone -->
+                <div class="field">
+                    <label class="title" for="phone">Phone Number:</label>
+                    <input type="text" id="phone" name="phone" placeholder="10 digits">
+                    <div class="error" id="phoneErr"></div>
+                </div>
+
+                <!-- Sex -->
+                <div class="field">
+                    <label class="title">Sex:</label>
+                    <label class="inline"><input type="radio" name="sex" value="male"> Male</label>
+                    <label class="inline"><input type="radio" name="sex" value="female"> Female</label>
+                    <label class="inline"><input type="radio" name="sex" value="other"> Other</label>
+                    <div class="error" id="sexErr"></div>
+                </div>
+
+                <!-- Date of Birth -->
+                <div class="field">
+                    <label class="title">Date of Birth:</label>
+                    <div class="dob-row">
+                        <select id="day" name="day">
+                            <option value="">Day</option>
+                            <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+                            <option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>
+                            <option>11</option><option>12</option><option>13</option><option>14</option><option>15</option>
+                            <option>16</option><option>17</option><option>18</option><option>19</option><option>20</option>
+                            <option>21</option><option>22</option><option>23</option><option>24</option><option>25</option>
+                            <option>26</option><option>27</option><option>28</option><option>29</option><option>30</option>
+                            <option>31</option>
+                        </select>
+
+                        <select id="month" name="month">
+                            <option value="">Month</option>
+                            <option>January</option><option>February</option><option>March</option>
+                            <option>April</option><option>May</option><option>June</option>
+                            <option>July</option><option>August</option><option>September</option>
+                            <option>October</option><option>November</option><option>December</option>
+                        </select>
+
+                        <select id="year" name="year">
+                            <option value="">Year</option>
+                        </select>
+                    </div>
+                    <div class="error" id="dobErr"></div>
+                </div>
+
+                <!-- Languages -->
+                <div class="field">
+                    <label class="title">Languages Known:</label>
+                    <label class="inline"><input type="checkbox" name="languages" value="English"> English</label>
+                    <label class="inline"><input type="checkbox" name="languages" value="Telugu"> Telugu</label>
+                    <label class="inline"><input type="checkbox" name="languages" value="Hindi"> Hindi</label>
+                    <label class="inline"><input type="checkbox" name="languages" value="Tamil"> Tamil</label>
+                </div>
+
+                <!-- Address -->
+                <div class="field">
+                    <label class="title" for="address">Address:</label>
+                    <textarea id="address" name="address" rows="4" placeholder="Fill the address "></textarea>
+                </div>
+
+                <div class="btn-row">
+                    <input type="submit" value="Submit" class="btn-submit">
+                    <input type="reset" value="Reset" class="btn-reset" onclick="clearErrors()">
+                </div>
+            </form>
+
+            <div class="success-msg" id="successMsg"> Registration has been successfull !</div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Developed by Anand Yadav | Roll No. 2501920110070 </p>
+    </footer>
+
+    <script>
+        // Year dropdown: 2026 se 2000 tak
+        const yearSelect = document.getElementById('year');
+        for (let y = 2026; y >= 2000; y--) {
+            const opt = document.createElement('option');
+            opt.textContent = y;
+            yearSelect.appendChild(opt);
+        }
+
+        function showError(id, msg) {
+            const el = document.getElementById(id);
+            el.textContent = msg;
+            el.classList.add('show');
+        }
+
+        function clearErrors() {
+            document.querySelectorAll('.error').forEach(function (el) {
+                el.textContent = '';
+                el.classList.remove('show');
+            });
+            document.getElementById('successMsg').style.display = 'none';
+        }
+
+        function validateForm() {
+            clearErrors();
+            let valid = true;
+
+            const name = document.getElementById('name').value.trim();
+            const password = document.getElementById('password').value;
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+
+            // 1. Name: sirf alphabets aur length 6 ya usse zyada
+            if (!/^[A-Za-z ]+$/.test(name)) {
+                showError('nameErr', 'Name mein sirf alphabets hone chahiye.');
+                valid = false;
+            } else if (name.length < 6) {
+                showError('nameErr', 'Name kam se kam 6 characters ka hona chahiye.');
+                valid = false;
+            }
+
+            // 2. Password: kam se kam 6 characters
+            if (password.length < 6) {
+                showError('passErr', 'Password kam se kam 6 characters ka hona chahiye.');
+                valid = false;
+            }
+
+            // 3. Email: standard pattern name@domain.com
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                showError('emailErr', 'Sahi email likhein (jaise name@domain.com).');
+                valid = false;
+            }
+
+            // 4. Phone: sirf 10 digits
+            if (!/^\d{10}$/.test(phone)) {
+                showError('phoneErr', 'Phone number mein exactly 10 digits hone chahiye.');
+                valid = false;
+            }
+
+            // 5. Sex select karna zaroori
+            if (!document.querySelector('input[name="sex"]:checked')) {
+                showError('sexErr', 'Sex select karein.');
+                valid = false;
+            }
+
+            // 6. Date of Birth poori select honi chahiye
+            const day = document.getElementById('day').value;
+            const month = document.getElementById('month').value;
+            const year = document.getElementById('year').value;
+            if (!day || !month || !year) {
+                showError('dobErr', 'Date of Birth ke teeno boxes select karein.');
+                valid = false;
+            }
+
+            if (valid) {
+                document.getElementById('successMsg').style.display = 'block';
+                document.getElementById('regForm').reset();
+                return false; // page refresh nahi hoga
+            }
+            return false; // error hone par bhi refresh nahi hoga
+        }
+    </script>
+
+</body>
+</html>
